@@ -12,90 +12,53 @@
             background-color: #f9f9f9;
             height: 100%;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             background: #fff;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 700px;
+            padding: 40px;
             box-sizing: border-box;
+            height: 100vh; /* Full height of the viewport */
+            width: 100vw; /* Full width of the viewport */
             overflow-y: auto;
         }
 
         h2, h3 {
             text-align: center;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8em; /* Larger text for headers */
         }
 
         p {
-            font-size: 14px;
+            font-size: 1.2em; /* Larger text for paragraphs */
             color: #555;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        .form-group input, 
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .form-group textarea {
-            resize: none;
-            height: 80px;
-        }
-
-        .form-group .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .form-group .checkbox-group label {
-            margin-right: 15px;
-            font-weight: normal;
-            color: #555;
-        }
-
-        .form-group .checkbox-group input {
-            margin-right: 5px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            text-align: center;
         }
 
         .form-buttons {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
         button {
             background-color: #0eb3c7;
             color: #fff;
             border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
+            padding: 15px 25px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1.2em;
             flex: 1;
-            margin: 5px;
+            max-width: 200px;
         }
 
         button:hover {
@@ -104,10 +67,68 @@
 
         .secondary-form {
             display: none;
+            width: 100%;
+            max-width: 800px;
         }
 
         .secondary-form.active {
             display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1.1em;
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .form-group .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .form-group .checkbox-group label {
+            margin-right: 20px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .form-group .checkbox-group input {
+            margin-right: 8px;
+        }
+
+        .form-group button {
+            background-color: #0eb3c7;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 1.2em;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #0a97ab;
         }
     </style>
 </head>
