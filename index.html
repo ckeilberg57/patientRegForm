@@ -27,7 +27,7 @@
             overflow-y: auto;
         }
 
-        h2, h3 {
+        h2 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
@@ -39,7 +39,7 @@
             color: #555;
             margin-bottom: 30px;
             line-height: 1.8;
-            text-align: center;
+            text-align: justify;
         }
 
         .form-buttons {
@@ -63,6 +63,10 @@
 
         button:hover {
             background-color: #0a97ab;
+        }
+
+        #acceptButton.accepted {
+            background-color: #28a745; /* Green for accepted */
         }
 
         .secondary-form {
@@ -137,8 +141,21 @@
     <div class="container">
         <h2>Patient Consent Form</h2>
         <p>
-            By accepting this form, you consent to the collection and use of your medical data for the purpose of providing medical care. 
-            Your information will remain confidential and will not be shared without your permission.
+            By signing this consent form, you agree to allow the healthcare provider to collect, process, and store your medical 
+            information as necessary for providing medical treatment and related healthcare services. 
+        </p>
+        <p>
+            You understand that the healthcare provider complies with applicable laws and regulations regarding patient data privacy 
+            and protection. Your information will not be shared with third parties without your explicit written consent, except 
+            where required by law or in cases of emergency where your health or safety is at risk.
+        </p>
+        <p>
+            This consent remains valid for the duration of your medical care unless revoked in writing. You also acknowledge that 
+            you have been informed of your rights under the Health Insurance Portability and Accountability Act (HIPAA).
+        </p>
+        <p>
+            By clicking "Accept," you confirm that you have read and understood the terms above and voluntarily agree to them. 
+            Should you choose to decline, we respect your decision, but it may affect our ability to provide certain healthcare services.
         </p>
         <div class="form-buttons">
             <button id="acceptButton">Accept</button>
@@ -176,6 +193,7 @@
         const secondaryForm = document.getElementById('secondaryForm');
 
         acceptButton.addEventListener('click', () => {
+            acceptButton.classList.add('accepted');
             secondaryForm.classList.add('active');
             alert('Thank you for accepting. Please proceed to fill out the medical information form.');
         });
