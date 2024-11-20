@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Registration Form</title>
+    <title>Patient Consent and Medical Information Form</title>
     <style>
-        /* General body styling for full screen */
         html, body {
             margin: 0;
             padding: 0;
@@ -18,27 +17,30 @@
             align-items: center;
         }
 
-        /* Form styling */
-        .registration-form {
+        .container {
             background: #fff;
             padding: 20px 30px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 100%;
-            height: 100%;
+            max-width: 700px;
             box-sizing: border-box;
             overflow-y: auto;
         }
 
-        /* Header styling */
-        .registration-form h2 {
-            margin-bottom: 15px;
-            font-size: 24px;
-            color: #333;
+        h2, h3 {
             text-align: center;
+            color: #333;
+            margin-bottom: 15px;
         }
 
-        /* Form groups for input fields */
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
         .form-group {
             margin-bottom: 15px;
         }
@@ -51,7 +53,6 @@
         }
 
         .form-group input, 
-        .form-group select, 
         .form-group textarea {
             width: 100%;
             padding: 10px;
@@ -65,8 +66,27 @@
             height: 80px;
         }
 
-        /* Button styling */
-        .form-group button {
+        .form-group .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .form-group .checkbox-group label {
+            margin-right: 15px;
+            font-weight: normal;
+            color: #555;
+        }
+
+        .form-group .checkbox-group input {
+            margin-right: 5px;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
             background-color: #0eb3c7;
             color: #fff;
             border: none;
@@ -74,55 +94,75 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            width: 100%;
+            flex: 1;
+            margin: 5px;
         }
 
-        .form-group button:hover {
+        button:hover {
             background-color: #0a97ab;
+        }
+
+        .secondary-form {
+            display: none;
+        }
+
+        .secondary-form.active {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <form class="registration-form">
-        <h2>Patient Registration</h2>
-        <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+    <div class="container">
+        <h2>Patient Consent Form</h2>
+        <p>
+            By accepting this form, you consent to the collection and use of your medical data for the purpose of providing medical care. 
+            Your information will remain confidential and will not be shared without your permission.
+        </p>
+        <div class="form-buttons">
+            <button id="acceptButton">Accept</button>
+            <button id="declineButton">Decline</button>
         </div>
-        <div class="form-group">
-            <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" required>
-        </div>
-        <div class="form-group">
-            <label for="gender">Gender</label>
-            <select id="gender" name="gender" required>
-                <option value="">-- Select Gender --</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="contact">Contact Number</label>
-            <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email address">
-        </div>
-        <div class="form-group">
-            <label for="address">Address</label>
-            <textarea id="address" name="address" placeholder="Enter your full address"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="medicalHistory">Medical History</label>
-            <textarea id="medicalHistory" name="medicalHistory" placeholder="Describe any previous or ongoing medical conditions"></textarea>
-        </div>
-        <div class="form-group">
-            <button type="submit">Submit</button>
-        </div>
-    </form>
+
+        <form class="secondary-form" id="secondaryForm">
+            <h3>Medical Information</h3>
+            <div class="form-group">
+                <label for="recentSurgeries">List of Recent Surgeries</label>
+                <textarea id="recentSurgeries" name="recentSurgeries" placeholder="Describe any recent surgeries"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="medications">List of Medications</label>
+                <textarea id="medications" name="medications" placeholder="List all current medications"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Do you have any of the following conditions?</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="conditions" value="highBloodPressure"> High Blood Pressure</label>
+                    <label><input type="checkbox" name="conditions" value="allergies"> Allergies</label>
+                    <label><input type="checkbox" name="conditions" value="diabetes"> Diabetes</label>
+                    <label><input type="checkbox" name="conditions" value="heartDisease"> Heart Disease</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const acceptButton = document.getElementById('acceptButton');
+        const declineButton = document.getElementById('declineButton');
+        const secondaryForm = document.getElementById('secondaryForm');
+
+        acceptButton.addEventListener('click', () => {
+            secondaryForm.classList.add('active');
+            alert('Thank you for accepting. Please proceed to fill out the medical information form.');
+        });
+
+        declineButton.addEventListener('click', () => {
+            alert('You have declined consent. The form will not proceed.');
+        });
+    </script>
 
 </body>
 </html>
