@@ -5,40 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Registration Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+        /* General body styling for full screen */
+        html, body {
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            height: 100%;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
+
+        /* Form styling */
         .registration-form {
             background: #fff;
-            padding: 20px;
+            padding: 20px 30px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 600px;
+            height: 100%;
             box-sizing: border-box;
+            overflow-y: auto;
         }
+
+        /* Header styling */
         .registration-form h2 {
             margin-bottom: 15px;
             font-size: 24px;
             color: #333;
             text-align: center;
         }
+
+        /* Form groups for input fields */
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #555;
         }
+
         .form-group input, 
         .form-group select, 
         .form-group textarea {
@@ -48,10 +59,13 @@
             border-radius: 4px;
             font-size: 14px;
         }
+
         .form-group textarea {
             resize: none;
             height: 80px;
         }
+
+        /* Button styling */
         .form-group button {
             background-color: #0eb3c7;
             color: #fff;
@@ -62,15 +76,9 @@
             font-size: 16px;
             width: 100%;
         }
+
         .form-group button:hover {
             background-color: #0a97ab;
-        }
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .registration-form {
-                padding: 15px;
-                width: 90%;
-            }
         }
     </style>
 </head>
