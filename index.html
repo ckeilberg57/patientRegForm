@@ -179,15 +179,61 @@
         const acceptButton = document.getElementById('acceptButton');
         const declineButton = document.getElementById('declineButton');
         const secondaryForm = document.getElementById('secondaryForm');
+        const submitButton = secondaryForm.querySelector('button[type="submit"]'); // Get the submit button
 
+        // Handle accept button click
         acceptButton.addEventListener('click', () => {
             acceptButton.classList.add('accepted');
             secondaryForm.classList.add('active');
             alert('Thank you for accepting. Please proceed to fill out the medical information form.');
         });
 
+        // Handle decline button click
         declineButton.addEventListener('click', () => {
             alert('You have declined consent. The form will not proceed.');
+        });
+
+        // Handle form submission
+        submitButton.addEventListener('click', async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data (you can send additional data from the form here if needed)
+            const formData = new FormData(secondaryForm);
+
+            // Build a payload if necessary, for example, you can send the conditions the user checked
+            const payload = {
+                recentSurgeries: formData.get('recentSurgeries'),
+                medications: formData.get('medications'),
+                conditions: Array.from(formData.getAll('conditions')), // Get all selected conditions
+            };
+
+            // Make the API call to Genesys Cloud (change URL to your Genesys Cloud webhook/notification endpoint)
+            const apiUrl = 'https://api.usw2.pure.cloud/v2/notifications';  // Replace with your actual Genesys Cloud endpoint
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer bgJKkxqD1sJC9ZV2XmyWsdLn2uqSPsgYaopWNrpA9a9D3IuXA_n7mfhTyAD6sqlhKY3ykU59EU5k9mt1DzMY6A',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        agent: '2c511956-e1b7-4b4c-afd0-f15000ecbde6', // Replace with your agent information or dynamic value
+                        message: 'A user has clicked submit on the form.',
+                        userDetails: payload,
+                    }),
+                });
+
+                if (response.ok) {
+                    // Successfully notified the agent
+                    alert('Form submitted successfully and agent notified!');
+                } else {
+                    throw new Error('Failed to notify agent');
+                }
+            } catch (error) {
+                console.error('Error notifying agent:', error);
+                alert('There was an issue notifying the agent.');
+            }
         });
     </script>
 
