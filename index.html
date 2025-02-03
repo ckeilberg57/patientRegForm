@@ -3,214 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Consent and Medical Information Form</title>
+    <title>Patient Medical History Form</title>
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
+        body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            height: 100%;
-            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Centers the content vertically */
-            align-items: center;
+        form {
             background: #fff;
             padding: 20px;
-            box-sizing: border-box;
-            height: 100vh; /* Full height of the viewport */
-            width: 100vw; /* Full width of the viewport */
-            overflow-y: auto;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px #ccc;
+            max-width: 500px;
+            margin: auto;
         }
-
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.8em;
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
         }
-
-        p {
-            font-size: 1.2em; /* Larger text */
-            color: #555;
-            margin: 0; /* No margin */
-            padding: 0; /* No padding */
-            line-height: 1.4; /* Adjusted line height */
-            text-align: justify;
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-
-        .form-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px; /* Reduced space from the top */
-            margin-bottom: 30px; /* Added margin to avoid buttons being at the very bottom */
-        }
-
         button {
             background-color: #0eb3c7;
-            color: #fff;
+            color: white;
+            padding: 10px;
             border: none;
-            padding: 15px 25px;
-            border-radius: 8px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1.2em;
-            flex: 1;
-            max-width: 200px;
+            margin-top: 10px;
+            width: 100%;
         }
-
         button:hover {
-            background-color: #0a97ab;
-        }
-
-        #acceptButton.accepted {
-            background-color: #28a745; /* Green for accepted */
-        }
-
-        .secondary-form {
-            display: none;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .secondary-form.active {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #555;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1.1em;
-        }
-
-        .form-group textarea {
-            resize: none;
-            height: 100px;
-        }
-
-        .form-group .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .form-group .checkbox-group label {
-            margin-right: 20px;
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        .form-group .checkbox-group input {
-            margin-right: 8px;
-        }
-
-        .form-group button {
-            background-color: #0eb3c7;
-            color: #fff;
-            border: none;
-            padding: 15px;
-            border-radius: 6px;
-            font-size: 1.2em;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .form-group button:hover {
-            background-color: #0a97ab;
+            background-color: #0a95a1;
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h2>Patient Consent Form</h2>
-        <p>
-            By signing this consent form, you agree to allow the healthcare provider to collect, process, and store your medical information as necessary for providing medical treatment and related healthcare services. You understand that the healthcare provider complies with applicable laws and regulations regarding patient data privacy and protection. Your information will not be shared with third parties without your explicit written consent, except where required by law or in cases of emergency where your health or safety is at risk. This consent remains valid for the duration of your medical care unless revoked in writing. You also acknowledge that you have been informed of your rights under the Health Insurance Portability and Accountability Act (HIPAA). By clicking "Accept," you confirm that you have read and understood the terms above and voluntarily agree to them. Should you choose to decline, we respect your decision, but it may affect our ability to provide certain healthcare services.
-        </p>
-        <div class="form-buttons">
-            <button id="acceptButton">Accept</button>
-            <button id="declineButton">Decline</button>
-        </div>
-
-        <form class="secondary-form" id="secondaryForm">
-            <h3>Medical Information</h3>
-            <div class="form-group">
-                <label for="recentSurgeries">List of Recent Surgeries</label>
-                <textarea id="recentSurgeries" name="recentSurgeries" placeholder="Describe any recent surgeries"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="medications">List of Medications</label>
-                <textarea id="medications" name="medications" placeholder="List all current medications"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Do you have any of the following conditions?</label>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" name="conditions" value="highBloodPressure"> High Blood Pressure</label>
-                    <label><input type="checkbox" name="conditions" value="allergies"> Allergies</label>
-                    <label><input type="checkbox" name="conditions" value="diabetes"> Diabetes</label>
-                    <label><input type="checkbox" name="conditions" value="heartDisease"> Heart Disease</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
+    <form id="patientForm">
+        <h2>Patient Medical History</h2>
+        
+        <label for="recentSurgeries">Recent Surgeries:</label>
+        <input type="text" id="recentSurgeries" name="recentSurgeries">
+        
+        <label for="medications">Current Medications:</label>
+        <input type="text" id="medications" name="medications">
+        
+        <label>Pre-existing Conditions:</label>
+        <input type="checkbox" name="conditions" value="Diabetes"> Diabetes<br>
+        <input type="checkbox" name="conditions" value="Heart Disease"> Heart Disease<br>
+        <input type="checkbox" name="conditions" value="Hypertension"> Hypertension<br>
+        <input type="checkbox" name="conditions" value="Asthma"> Asthma<br>
+        <input type="checkbox" name="conditions" value="None"> None<br>
+        
+        <button type="submit" id="submitButton">Submit</button>
+    </form>
 
     <script>
-        const acceptButton = document.getElementById('acceptButton');
-        const declineButton = document.getElementById('declineButton');
-        const secondaryForm = document.getElementById('secondaryForm');
-        const submitButton = secondaryForm.querySelector('button[type="submit"]'); // Get the submit button
-
-        // Handle accept button click
-        acceptButton.addEventListener('click', () => {
-            acceptButton.classList.add('accepted');
-            secondaryForm.classList.add('active');
-            alert('Thank you for accepting. Please proceed to fill out the medical information form.');
-        });
-
-        // Handle decline button click
-        declineButton.addEventListener('click', () => {
-            alert('You have declined consent. The form will not proceed.');
-        });
-
-        // Handle form submission
-        submitButton.addEventListener('click', async (event) => {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get form data (you can send additional data from the form here if needed)
-            const formData = new FormData(secondaryForm);
-
-            // Build a payload if necessary, for example, you can send the conditions the user checked
+        document.getElementById('submitButton').addEventListener('click', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+            
+            const formData = new FormData(document.getElementById('patientForm'));
             const payload = {
                 recentSurgeries: formData.get('recentSurgeries'),
                 medications: formData.get('medications'),
-                conditions: Array.from(formData.getAll('conditions')), // Get all selected conditions
+                conditions: Array.from(formData.getAll('conditions'))
             };
-
-            // Make the API call to Genesys Cloud (change URL to your Genesys Cloud webhook/notification endpoint)
-            const apiUrl = 'https://api.usw2.pure.cloud/v2/notifications';  // Replace with your actual Genesys Cloud endpoint
-
+            
             try {
+                const agentId = "2c511956-e1b7-4b4c-afd0-f15000ecbde6"; 
+                const apiUrl = `https://api.usw2.pure.cloud/v2/notifications/channels/2c511956-e1b7-4b4c-afd0-f15000ecbde6`;
+                
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
@@ -218,14 +88,13 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        agent: '2c511956-e1b7-4b4c-afd0-f15000ecbde6', // Replace with your agent information or dynamic value
-                        message: 'A user has clicked submit on the form.',
-                        userDetails: payload,
+                        topicId: `v2.users.${agentId}.messages`,
+                        message: 'A patient has submitted the form!',
+                        userDetails: payload
                     }),
                 });
-
+                
                 if (response.ok) {
-                    // Successfully notified the agent
                     alert('Form submitted successfully and agent notified!');
                 } else {
                     throw new Error('Failed to notify agent');
@@ -236,6 +105,5 @@
             }
         });
     </script>
-
 </body>
 </html>
